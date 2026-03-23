@@ -54,7 +54,7 @@ To get Frame-wise Accuracy result, run the following command and check paths if 
 ```
 python frame_wise_acc.py
 ```
-### Step 4.3: Multi-view Fusion (obtional)
+### Step 4.3: Multi-view Fusion (optional)
 After obtaining model inferences for different views, run the following command to generate the late fusion results with post-processing:
 ```
 python post_combine.py
