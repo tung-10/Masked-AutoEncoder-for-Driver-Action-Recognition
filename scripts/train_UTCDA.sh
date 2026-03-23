@@ -1,7 +1,6 @@
 DATA_PATH='/mnt/data2t/datasets/UTCDA/videos_splited'
-# MODEL_PATH='./checkpoints/UTCDA/checkpoint-19.pth'
 MODEL_PATH='vit_l_hybrid_pt_800e_k700_ft.pth'
-OUTPUT_DIR='./checkpoints_rear2'
+OUTPUT_DIR='./checkpoints'
 CUDA_VISIBLE_DEVICES=0 python run_class_finetuning.py \
     --model vit_large_patch16_224 \
     --data_set UTCDA \
@@ -20,7 +19,7 @@ CUDA_VISIBLE_DEVICES=0 python run_class_finetuning.py \
     --opt lion \
     --with_checkpoint \
     # --disable_eval_during_finetuning \
-    --eval \
+    # --eval \
     --num_workers 5 \
     --opt_betas 0.9 0.999 \
     --weight_decay 0.05 \

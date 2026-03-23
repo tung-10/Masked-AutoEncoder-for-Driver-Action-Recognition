@@ -1,6 +1,5 @@
 OUTPUT_DIR='./checkpoints/'
 DATA_PATH='/mnt/data2t/datasets/UTCDA/video_test.txt'
-
 MODEL_PATH='./checkpoints/checkpoint-24.pth'
 python evaluate_loc.py \
     --model vit_large_patch16_224 \

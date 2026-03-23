@@ -1,0 +1,34 @@
+# Docker file from Python is inspired from here :
+# https://github.com/github/gitignore/blob/master/Python.gitignore
+
+# custom
+.vscode
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+*.csv
+*.tar.gz
+*png
+*.pth
+*.ipynb
+
+# others
+work_dir/
+data/
+checkpoints/
+weights/
+checkpoints_front/
+checkpoints_front2/
+checkpoints_rear/
+checkpoints_rear2/
+clip/
+preprocess/
+video_test_front.txt
+video_test_rear.txt
+

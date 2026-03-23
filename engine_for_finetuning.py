@@ -399,7 +399,68 @@ def merge(eval_path, num_tasks, method='prob'):
 
     return final_top1 * 100, final_top5 * 100
 
+def merge_isolated(eval_path, num_tasks, method='prob'):
+    assert method in ['prob', 'score']
+    dict_feats = {}
+    dict_label = {}
 
+    for x in range(num_tasks):
+        file = os.path.join(eval_path, str(x) + '.txt')
+        lines = open(file, 'r').readlines()[1:]
+        for line in lines:
+            line = line.strip()
+            name = line.split('[')[0]
+            label = line.split(']')[1].split(' ')[1]
+            # chunk_nb = line.split(']')[1].split(' ')[2]
+            # split_nb = line.split(']')[1].split(' ')[3]
+            data = np.fromstring(
+                line.split('[')[1].split(']')[0], dtype=float, sep=',')
+            if name not in dict_feats:
+                dict_feats[name] = []
+                dict_label[name] = 0
+            #     dict_pos[name] = []
+            # if chunk_nb + split_nb in dict_pos[name]:
+            #     continue
+            if method == 'prob':
+                dict_feats[name].append(softmax(data))
+            else:
+                dict_feats[name].append(data)
+            # dict_pos[name].append(chunk_nb + split_nb)
+            dict_label[name] = label
+    print("Computing final results")
+
+    input_lst = []
+    for i, item in enumerate(dict_feats):
+        input_lst.append([i, item, dict_feats[item], dict_label[item]])
+    p = Pool(64)
+    # [pred, top1, top5, label]
+    ans = p.map(compute_video, input_lst)
+    top1 = [x[1] for x in ans]
+    top5 = [x[2] for x in ans]
+    label = [x[3] for x in ans]
+    final_top1, final_top5 = np.mean(top1), np.mean(top5)
+
+    # Compute per-class accuracy
+    num_classes = max(label) + 1
+    correct = [0] * num_classes
+    total = [0] * num_classes
+    for _, t1, _, lab in ans:
+        total[lab] += 1
+        if t1 == 1.0:
+            correct[lab] += 1
+    class_acc = [c / t * 100 if t > 0 else 0 for c, t in zip(correct, total)]
+    from sklearn.metrics import confusion_matrix
+
+    # predicted và label
+    y_pred = [x[0] for x in ans]
+    y_true = [x[3] for x in ans]
+
+    cm = confusion_matrix(y_true, y_pred)
+
+    cm_norm = cm.astype(float) / cm.sum(axis=1, keepdims=True)
+
+
+    return class_acc, final_top1 * 100, final_top5 * 100
 def compute_video(lst):
     i, video_id, data, label = lst
     feat = [x for x in data]

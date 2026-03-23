@@ -672,7 +672,7 @@ def main(args, ds_init):
             resume='')
         print("Using EMA with decay = %.8f" % args.model_ema_decay)
 
-    # start = time.time()
+    start = time.time()
     dataset = VideoInferDataset(args.csv_file, clip_len=args.num_frames, frame_sample_rate=args.sampling_rate, clip_stride=args.clip_stride, view="UTCDA")
     test_loader = torch.utils.data.DataLoader(dataset, batch_size=16, num_workers=8)
 
@@ -682,7 +682,7 @@ def main(args, ds_init):
         if idx % 10 == 0:
             print("Processed {} batch".format(idx))
         input_data = batch[0]
-        # start = time.time()
+        #start = time.time()
         with torch.no_grad():
             
             if args.model_ema:
@@ -694,8 +694,8 @@ def main(args, ds_init):
             
             row_data.extend(zip(list(batch[1]), batch[2].cpu().numpy().tolist(), probs.cpu().numpy().tolist()))
         # print(time.time()-start)
-    # end = time.time()
-    # print("Cost of a video:{}s".format((end-start)))
+    end = time.time()
+    print("Cost of a video:{}s".format((end-start)))
     results = pd.DataFrame(row_data, columns=['filename', 'clip_idx', "prob"])
     results = results.sort_values(by=["filename", 'clip_idx']).reset_index()
     unique_names = results["filename"].unique()

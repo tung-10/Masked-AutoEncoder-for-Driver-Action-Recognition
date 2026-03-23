@@ -147,6 +147,13 @@ def merge_and_remove(data, merge_threshold=16):
         # vid_all = process_overlap(vid_all, i, ignore_list_subject=None, ignore_list_start=None)
         df_total = pd.concat([df_total, vid_all], ignore_index=True)
     df_total = df_total[df_total["end"]!=0]
+    min_len = 3
+
+    df_total["length"] = df_total["end"] - df_total["start"]
+
+    df_total = df_total[df_total["length"] >= min_len]
+
+    df_total = df_total.drop(columns=["length"])
 
     df_total = df_total.drop(columns=['index'])
     df_total = df_total.sort_values(by=["video_id", "start"])

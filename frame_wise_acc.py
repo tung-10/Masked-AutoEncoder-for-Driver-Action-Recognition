@@ -10,7 +10,7 @@ def compute_frame_wise(ground_truth, prediction):
     return np.mean(scores)
 
 parser = argparse.ArgumentParser("Calculate Frame-wise Accuracy")
-parser.add_argument('--pred', type=str, default='pred_fused_front_rear.csv')
+parser.add_argument('--pred', type=str, default='pred_front.csv')
 parser.add_argument('--gt', type=str, default='test_grt.csv')
 
 gt = pd.read_csv(str(parser.parse_args().gt))
