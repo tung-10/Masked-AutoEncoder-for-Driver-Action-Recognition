@@ -108,6 +108,8 @@ class VideoClsDataset(Dataset):
             self.data_resize = video_transforms.Compose([
                 video_transforms.Resize(
                     size=(short_side_size), interpolation='bilinear')
+                video_transforms.CenterCrop(
+                    size=(self.crop_size, self.crop_size))
             ])
             self.data_transform = video_transforms.Compose([
                 volume_transforms.ClipToTensor(),
