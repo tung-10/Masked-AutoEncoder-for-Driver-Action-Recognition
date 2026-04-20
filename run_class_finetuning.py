@@ -318,7 +318,7 @@ def get_args():
         default='Kinetics-400',
         choices=[
             'Kinetics-400', 'Kinetics-600', 'Kinetics-700', 'SSV2', 'UCF101',
-            'HMDB51', 'Diving48', 'Kinetics-710', 'MIT', 'Cobot', "Ego-Gesture", 'UTCDA'
+            'HMDB51', 'Diving48', 'Kinetics-710', 'MIT', 'Cobot', "Ego-Gesture", 'UTCDA', 'driver'
         ],
         type=str,
         help='dataset')
