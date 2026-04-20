@@ -89,6 +89,9 @@ class VideoClsDataset(Dataset):
                     else:
                         ds += [data] * 5
                         la += [label] * 5
+                else:
+                    ds.append(data)
+                    la.append(label)
             self.dataset_samples = ds
             self.label_array = la
         elif (mode == 'validation'):
