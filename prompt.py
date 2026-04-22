@@ -6,18 +6,17 @@ import numpy as np
 prefix = "A person "
 
 list_of_texts = [
-    f'{prefix}is sitting still, waiting, not performing any specific action.',
-    f'{prefix}is driving safely, keeping both hands on the steering wheel and eyes on the road.',
-    f'{prefix}is reaching down to change gears with one hand while the other remains on the steering wheel.',
-    f'{prefix}is turning their head to check the mirrors around the vehicle.',
-    f'{prefix}is picking up a bottle and drinking water while seated.',
-    f'{prefix}is raising one hand to touch or adjust their hair.',
-    f'{prefix}is turning their head and body sideways to talk to a passenger.',
-    f'{prefix}is looking down and using their phone while seated.',
-    f'{prefix}is picking up a phone call, raising their hand to hold the phone to their ear.',
-    f'{prefix}is nodding their head up and down repeatedly.',
-    f'{prefix}is reaching sideways with one arm to grab something out of reach.',
-]
+    f'{prefix}is sitting still with both hands resting, not moving.',
+    f'{prefix}is driving with both hands firmly on the steering wheel, eyes forward.',
+    f'{prefix}is moving one hand down to the gear shift beside the seat.', 
+    f'{prefix}is briefly glancing sideways at the side mirror while keeping hands on wheel.',
+    f'{prefix}is lifting a bottle or a cup to their mouth and drinking.',
+    f'{prefix}is lifting one hand up to touch their hair on their head.',
+    f'{prefix}is turning their head to the side to talk ơr show expression.', 
+    f'{prefix}is taking a phone in hand and looking down at the screen.', 
+    f'{prefix}is raising their hand to hold a ringing phone against their ear.',
+    f'{prefix}is moving their head suddenly down and up.', 
+    f'{prefix}is stretching one arm far to the side to reach an object.',
 
 list_of_labels = [
     'Waiting',
