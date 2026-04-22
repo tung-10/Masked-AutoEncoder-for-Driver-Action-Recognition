@@ -76,7 +76,7 @@ class TextCLIP(nn.Module):
 
     def load_model_clip(self):
         # ViT-L/14 outputs 768-dim features, matching ViT-Base visual encoder
-        self.model_clip, self.preprocess = clip.load("ViT-L/14", self.device)
+        self.model_clip, self.preprocess = clip.load(self.model_name, self.device)
         self.model_clip = self.model_clip.float()
 
     def tokenize_list(self):
