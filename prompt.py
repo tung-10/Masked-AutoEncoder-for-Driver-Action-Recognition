@@ -17,6 +17,7 @@ list_of_texts = [
     f'{prefix}is raising their hand to hold a ringing phone against their ear.',
     f'{prefix}is moving their head suddenly down and up.', 
     f'{prefix}is stretching one arm far to the side to reach an object.',
+]
 
 list_of_labels = [
     'Waiting',
