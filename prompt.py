@@ -6,8 +6,6 @@ import numpy as np
 prefix = "A person "
 
 list_of_texts = [
-    f'{prefix}is sitting still with both hands resting, not moving.',
-    f'{prefix}is driving with both hands firmly on the steering wheel, eyes forward.',
     f'{prefix}is moving one hand down to the gear shift beside the seat.', 
     f'{prefix}is making a quick and brief glance to the side mirror with minimal head movement.',
     f'{prefix}is lifting a bottle or a cup to their mouth and drinking.',
@@ -20,8 +18,6 @@ list_of_texts = [
 ]
 
 list_of_labels = [
-    'Waiting',
-    'Driving safely',
     'Changing gears',
     'Checking mirrors',
     'Drinking water',
@@ -35,8 +31,6 @@ list_of_labels = [
 
 # Safety labels for reference
 safety_labels = {
-    'Waiting': 'Safe',
-    'Driving safely': 'Safe',
     'Changing gears': 'Safe',
     'Checking mirrors': 'Safe',
     'Drinking water': 'Unsafe',
