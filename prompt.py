@@ -13,7 +13,7 @@ list_of_texts = [
     f'{prefix}is turning their head to the side as if interacting with another person, possibly nodding, talking or showing facial expressions.', 
     f'{prefix}is taking a phone in hand and looking down at the screen.', 
     f'{prefix}is raising their hand to hold a phone against their ear.',
-    f'{prefix}is moving their head suddenly down and up.', 
+    f'{prefix}is dropping their head down suddenly due to drowsiness, then jerking back up.', 
     f'{prefix}is stretching one arm far to the side to reach an object.',
 ]
 
@@ -25,7 +25,7 @@ list_of_labels = [
     'Talking to passengers',
     'Checking the phone',
     'Picking up a call',
-    'Nodding',
+    'Nodding off',
     'Reaching sideways',
 ]
 
@@ -38,7 +38,7 @@ safety_labels = {
     'Talking to passengers': 'Unsafe',
     'Checking the phone': 'Unsafe',
     'Picking up a call': 'Unsafe',
-    'Nodding': 'Unsafe',
+    'Nodding off': 'Unsafe',
     'Reaching sideways': 'Unsafe',
 }
 
